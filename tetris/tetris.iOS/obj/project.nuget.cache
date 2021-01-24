@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "kg30gIKQfIVt9mIicaJWWsbpda4Vtw39hH01MWo1yb+yaB6JfC3TJ74LfSksBJ/VJWtkxOBBwsSqqhLCaNBRSQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rlaal\\source\\repos\\kimminkuk\\tetris_version4\\tetris\\tetris.iOS\\tetris.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.8.0.1451\\xamarin.forms.4.8.0.1451.nupkg.sha512"
+  ],
+  "logs": []
+}

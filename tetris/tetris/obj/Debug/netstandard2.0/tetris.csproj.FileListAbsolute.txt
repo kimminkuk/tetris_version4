@@ -1,0 +1,14 @@
+C:\Users\rlaal\source\repos\kimminkuk\tetris_version4\tetris\tetris\bin\Debug\netstandard2.0\tetris.deps.json
+C:\Users\rlaal\source\repos\kimminkuk\tetris_version4\tetris\tetris\bin\Debug\netstandard2.0\tetris.dll
+C:\Users\rlaal\source\repos\kimminkuk\tetris_version4\tetris\tetris\bin\Debug\netstandard2.0\ref\tetris.dll
+C:\Users\rlaal\source\repos\kimminkuk\tetris_version4\tetris\tetris\bin\Debug\netstandard2.0\tetris.pdb
+C:\Users\rlaal\source\repos\kimminkuk\tetris_version4\tetris\tetris\obj\Debug\netstandard2.0\tetris.csprojAssemblyReference.cache
+C:\Users\rlaal\source\repos\kimminkuk\tetris_version4\tetris\tetris\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\rlaal\source\repos\kimminkuk\tetris_version4\tetris\tetris\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\rlaal\source\repos\kimminkuk\tetris_version4\tetris\tetris\obj\Debug\netstandard2.0\tetris.AssemblyInfoInputs.cache
+C:\Users\rlaal\source\repos\kimminkuk\tetris_version4\tetris\tetris\obj\Debug\netstandard2.0\tetris.AssemblyInfo.cs
+C:\Users\rlaal\source\repos\kimminkuk\tetris_version4\tetris\tetris\obj\Debug\netstandard2.0\tetris.csproj.CoreCompileInputs.cache
+C:\Users\rlaal\source\repos\kimminkuk\tetris_version4\tetris\tetris\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\rlaal\source\repos\kimminkuk\tetris_version4\tetris\tetris\obj\Debug\netstandard2.0\tetris.dll
+C:\Users\rlaal\source\repos\kimminkuk\tetris_version4\tetris\tetris\obj\Debug\netstandard2.0\ref\tetris.dll
+C:\Users\rlaal\source\repos\kimminkuk\tetris_version4\tetris\tetris\obj\Debug\netstandard2.0\tetris.pdb

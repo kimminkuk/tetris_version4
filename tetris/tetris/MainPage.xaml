@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="tetris.MainPage"
+             >
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Background="White" Grid.Row="0" Grid.Column="0"/>
+        <Grid Background="Blue" Grid.Row="1" Grid.Column="0"/>
+        <Grid Background="Green" Grid.Row="0" Grid.Column="1"/>
+        <Grid Background="Green" Grid.Row="1" Grid.Column="1"/>
+
+        <Grid RowSpacing="0" ColumnSpacing="0" 
+            Grid.Row="0" Grid.Column="0" Margin="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+
+            </Grid.ColumnDefinitions>
+
+            <Grid BackgroundColor="Red" Grid.Column="2" Grid.Row="2"/>
+            <Grid BackgroundColor="Red" Grid.Column="2" Grid.Row="3"/>
+            <Grid BackgroundColor="Red" Grid.Column="3" Grid.Row="3"/>
+            <Grid BackgroundColor="Red" Grid.Column="4" Grid.Row="3"/>
+        </Grid>
+
+        <Grid RowSpacing="0" ColumnSpacing="0"
+              Grid.Row="0" Grid.Column="1" Margin="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="NEXT" FontSize="24" FontFamily="Yet R"
+                   Grid.Row="0" Grid.ColumnSpan="4"
+                       TextColor="RED" HorizontalTextAlignment="Center"
+                       TextTransform="None"
+                       IsEnabled="False"/>
+
+            <Grid BackgroundColor="Red" Grid.Column="1" Grid.Row="2"/>
+            <Grid BackgroundColor="Red" Grid.Column="1" Grid.Row="3"/>
+            <Grid BackgroundColor="Red" Grid.Column="2" Grid.Row="3"/>
+            <Grid BackgroundColor="Red" Grid.Column="3" Grid.Row="3"/>
+
+            <!--
+            <Grid BackgroundColor="{Binding Block_pan[1-0], Converter={StaticResource IntToColor}, ConverterParameter=1}" Grid.Row="1" Grid.Column="0"/>
+            <Grid BackgroundColor="{Binding Block_pan[1-1], Converter={StaticResource IntToColor}, ConverterParameter=1}" Grid.Row="1" Grid.Column="1"/>
+            <Grid BackgroundColor="{Binding Block_pan[1-2], Converter={StaticResource IntToColor}, ConverterParameter=1}" Grid.Row="1" Grid.Column="2"/>
+            <Grid BackgroundColor="{Binding Block_pan[1-3], Converter={StaticResource IntToColor}, ConverterParameter=1}" Grid.Row="1" Grid.Column="3"/>
+            <Grid BackgroundColor="{Binding Block_pan[2-0], Converter={StaticResource IntToColor}, ConverterParameter=1}" Grid.Row="2" Grid.Column="0"/>
+            <Grid BackgroundColor="{Binding Block_pan[2-1], Converter={StaticResource IntToColor}, ConverterParameter=1}" Grid.Row="2" Grid.Column="1"/>
+            <Grid BackgroundColor="{Binding Block_pan[2-2], Converter={StaticResource IntToColor}, ConverterParameter=1}" Grid.Row="2" Grid.Column="2"/>
+            <Grid BackgroundColor="{Binding Block_pan[2-3], Converter={StaticResource IntToColor}, ConverterParameter=1}" Grid.Row="2" Grid.Column="3"/>
+-->
+            <Label Text="SCORE" FontSize="24" FontFamily="Yet R"
+                   Grid.Row="4" Grid.ColumnSpan="4"
+                       TextColor="Black" HorizontalTextAlignment="Center"
+                       TextTransform="None"
+                       IsEnabled="False"/>
+            <Label IsEnabled="False" Text="{Binding Game_score}" FontSize="24"
+                   Grid.Row="5" Grid.ColumnSpan="4"
+                   BackgroundColor="Aqua"
+                   FontFamily="Yet R"/>
+
+            <Label Text="LINE" FontSize="24" FontFamily="Yet R"
+                   Grid.Row="6" Grid.ColumnSpan="4"
+                       TextColor="Black" HorizontalTextAlignment="Center"
+                       TextTransform="None"
+                       IsEnabled="False"/>
+            <Label IsEnabled="False" Text="{Binding Game_line}" FontSize="24"
+                   Grid.Row="7" Grid.ColumnSpan="4"
+                   BackgroundColor="Aqua"
+                   FontFamily="Yet R"/>
+
+            <Label Text="LEVEL" FontSize="24" FontFamily="Yet R"
+                   Grid.Row="8" Grid.ColumnSpan="4"
+                       TextColor="Black" HorizontalTextAlignment="Center"
+                       TextTransform="None"
+                       IsEnabled="False"/>
+            <Label IsEnabled="False" Text="{Binding Game_level}" FontSize="24"
+                   Grid.Row="9" Grid.ColumnSpan="4"
+                   BackgroundColor="Aqua"
+                   FontFamily="Yet R"/>
+        </Grid>
+
+
+    </Grid>
+
+</ContentPage>
