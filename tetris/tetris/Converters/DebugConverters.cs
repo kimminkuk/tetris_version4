@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace tetris_version4.Converters
+namespace tetris.Converters
 {
     public class DebugConverters : IValueConverter
     {

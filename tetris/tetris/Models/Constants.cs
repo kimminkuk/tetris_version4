@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace tetris_version4.Models
+namespace tetris.Models
 {
     public class Constants
     {

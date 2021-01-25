@@ -5,13 +5,16 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using tetris.Models;
 
-namespace tetris_version4.ViewModels
+namespace tetris.ViewModels
 {
     public class MainXamarinViewModels : INotifyPropertyChanged
     {
+        const int TETRIS_Width  = 21;
+        const int TETRIS_Height = 12;
         int[,] _block_buf = new int[4, 4];
-        int[,] _memory_pan = new int[21, 12];
+        int[,] _memory_pan = new int[TETRIS_Width, TETRIS_Height];
         int next_block = 0;
         int block_kind = 0;
         int status_x = 0;
@@ -24,6 +27,14 @@ namespace tetris_version4.ViewModels
 
         public bool Is_gaming { get; set; } = false;
 
+        //public int Game_level 
+        //{
+        //    set 
+        //    { 
+        //        if( G )
+        //    } 
+        //}
+        
         public int Game_score { get => game_score; set { game_score = value; NotifyPropertyChanged("Game_score"); } }
         public int Game_line { get => game_line; set { game_line = value; NotifyPropertyChanged("Game_line"); } }
         public int Game_level { get => game_level; set { game_level = value; NotifyPropertyChanged("Game_level"); } }
@@ -39,6 +50,7 @@ namespace tetris_version4.ViewModels
         public MainXamarinViewModels()
         {
             Init_game();
+            
         }
 
         private void DrawCrash()
@@ -59,6 +71,52 @@ namespace tetris_version4.ViewModels
             status_y = -3;
 
             DrawBufBlock(block_kind, _block_buf);
+            game_level = 1;
+            game_line = 0;
+            game_score = 0;
+
+            DrawPanBlock();
+
+        }
+
+        internal void EnterGame()
+        {
+            if (Is_gaming == false)
+            {
+                Init_game();
+
+                Is_gaming = true;
+
+                //DrawNext();
+                //Block_down();
+                //StartTimer();
+            }
+            else
+            {
+                DrawCrash();
+            }
+        }
+
+        private void DrawPanBlock()
+        {
+            int i = 0, j = 0;
+            for(i = 0; i < TETRIS_Width; i++)
+            {
+                for(j = 0; j < TETRIS_Height; j++)
+                {
+                    if ( i == 0 || j == 11 || i == 20 ) //End Side
+                    {
+                        block_pan[i, j]  = Constants.Block_wall;
+                        _memory_pan[i, j] = Constants.Block_wall;
+                    }
+                    else //Normal 
+                    {
+                        block_pan[i, j] = Constants.Block_background;
+                        _memory_pan[i, j] = Constants.Block_background;
+                    }
+                }
+            }
+            block_pan.NotifyBlockChaned("Block_pan");
         }
 
         private void DrawBufBlock(int block_kind, int[,] block_buf)
@@ -100,7 +158,8 @@ namespace tetris_version4.ViewModels
 
         #region notifyproperty
         public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(string propertyName)
+        //private void NotifyPropertyChanged(string propertyName)
+        protected virtual void NotifyPropertyChanged(string propertyName)
         {
             if(this.PropertyChanged != null)
             {

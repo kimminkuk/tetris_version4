@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using tetris_version4.Models;
+using tetris.Models;
 
-namespace tetris_version4.Converters
+namespace tetris.Converters
 {
     public class IntToColor : IValueConverter
     {

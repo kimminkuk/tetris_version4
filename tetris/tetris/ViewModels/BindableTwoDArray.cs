@@ -6,7 +6,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace tetris_version4.ViewModels
+//?
+using Xamarin.Forms;
+
+namespace tetris.ViewModels
 {
     /// <summary>
     /// This class is a bindable encapsulation of a 2D array.
@@ -20,6 +23,7 @@ namespace tetris_version4.ViewModels
             var pc = PropertyChanged;
             if (pc != null)
                 pc(this, new PropertyChangedEventArgs(property));
+
         }
 
         T[,] data;
@@ -27,6 +31,7 @@ namespace tetris_version4.ViewModels
         public void NotifyBlockChaned(string _change)
         {
             Notify(_change);
+            //Notify("Block_pan");
             //Notify(Binding.IndexerName);
         }
         public T this[int c1, int c2]

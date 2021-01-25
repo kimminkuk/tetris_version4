@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "kg30gIKQfIVt9mIicaJWWsbpda4Vtw39hH01MWo1yb+yaB6JfC3TJ74LfSksBJ/VJWtkxOBBwsSqqhLCaNBRSQ==",
+  "dgSpecHash": "Bd/8oOCB7jlCVyfIJq2g3llboWkfRLGustMPL5FWJ2mifgzYt4pCHPQjIek8RfaP6vJvwb/FHKRA1A7OO3NpTg==",
   "success": true,
   "projectFilePath": "C:\\Users\\rlaal\\source\\repos\\kimminkuk\\tetris_version4\\tetris\\tetris.iOS\\tetris.iOS.csproj",
   "expectedPackageFiles": [
-    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
-    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.8.0.1451\\xamarin.forms.4.8.0.1451.nupkg.sha512"
+    "C:\\Users\\rlaal\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\rlaal\\.nuget\\packages\\xamarin.essentials\\1.6.1-preview2\\xamarin.essentials.1.6.1-preview2.nupkg.sha512",
+    "C:\\Users\\rlaal\\.nuget\\packages\\xamarin.forms\\5.0.0.1905\\xamarin.forms.5.0.0.1905.nupkg.sha512"
   ],
   "logs": []
 }
