@@ -4,13 +4,22 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using tetris.Models;
+using System.ComponentModel;
 
 namespace tetris.Converters
 {
-    public class IntToColor : IValueConverter
+    public class IntToColor : BindableObject, IValueConverter
     {
+        public static readonly BindableProperty ConvParamProperty = BindableProperty.Create(nameof(ConvParam), typeof(int), typeof(IntToColor));
+        public int ConvParam
+        {
+            get { return (int)GetValue(ConvParamProperty); }
+            set { SetValue(ConvParamProperty, value); }
+        }
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             int type = (int)value;
@@ -22,17 +31,17 @@ namespace tetris.Converters
 
                 case Constants.Block_wall:
                     return new SolidColorBrush(Color.Ivory);
-                case (int)Constants.BLOCK.Block_1:
-                    return new SolidColorBrush(Color.Yellow);
-                case (int)Constants.BLOCK.Block_2:
-                    return new SolidColorBrush(Color.Red);
-                case (int)Constants.BLOCK.Block_3:
-                    return new SolidColorBrush(Color.Black);
-                case (int)Constants.BLOCK.Block_4:
-                    return new SolidColorBrush(Color.Aqua);
-                case (int)Constants.BLOCK.Block_5:
+                case Constants.Block_1:
                     return new SolidColorBrush(Color.Green);
-                case (int)Constants.BLOCK.Block_6:
+                case Constants.Block_2:
+                    return new SolidColorBrush(Color.Blue);
+                case Constants.Block_3:
+                    return new SolidColorBrush(Color.Red);
+                case Constants.Block_4:
+                    return new SolidColorBrush(Color.Yellow);
+                case Constants.Block_5:
+                    return new SolidColorBrush(Color.Magenta);
+                case Constants.Block_6:
                     return new SolidColorBrush(Color.Lime);
             }
             return new SolidColorBrush(Color.Black);
@@ -40,7 +49,7 @@ namespace tetris.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            return value;
         }
     }
 }

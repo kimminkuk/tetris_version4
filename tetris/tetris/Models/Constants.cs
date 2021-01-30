@@ -7,8 +7,17 @@ namespace tetris.Models
 {
     public class Constants
     {
-        public enum TETRIS { MOVE_RIGHT = 1, MOVE_LEFT, MOVE_DOWN }
-        public enum BLOCK { Block_1 = 1, Block_2, Block_3, Block_4, Block_5, Block_6, Block_7 }
+        public const int MOVE_RIGHT = 1;
+        public const int MOVE_LEFT = 2;
+        public const int MOVE_DOWN = 3;
+
+        public const int Block_1 = 1;
+        public const int Block_2 = 2;
+        public const int Block_3 = 3;
+        public const int Block_4 = 4;
+        public const int Block_5 = 5;
+        public const int Block_6 = 6;
+        public const int Block_7 = 7;
 
         public const int Block_wall = -1;
         public const int Block_background = 0;

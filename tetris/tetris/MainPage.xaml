@@ -11,7 +11,7 @@
         <converter:IntToColor x:Key="IntToColor"/>
     </ContentPage.Resources>
 
-    <Grid>
+    <Grid RowSpacing="0" ColumnSpacing="0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="*"/>
@@ -26,8 +26,9 @@
         <Grid Background="Green" Grid.Row="0" Grid.Column="1"/>
         <Grid Background="Green" Grid.Row="1" Grid.Column="1"/>
 
-        <Grid RowSpacing="0" ColumnSpacing="0" 
+        <Grid RowSpacing="-2" ColumnSpacing="-2" 
             Grid.Row="0" Grid.Column="0">
+            
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -67,18 +68,22 @@
                 
             </Grid.ColumnDefinitions>
 
-            <Rectangle Fill="{Binding Block_pan[0-0], Converter={StaticResource IntToColor}}" Grid.Row="0" Grid.Column="0"/>
-            <Rectangle Fill="{Binding Block_pan[0-1], Converter={StaticResource IntToColor}}" Grid.Row="0" Grid.Column="1"/>
-            <Rectangle Fill="{Binding Block_pan[0-2], Converter={StaticResource IntToColor}}" Grid.Row="0" Grid.Column="2"/>
-            <Rectangle Fill="{Binding Block_pan[0-3], Converter={StaticResource IntToColor}}" Grid.Row="0" Grid.Column="3"/>
-            <Rectangle Fill="{Binding Block_pan[0-4], Converter={StaticResource IntToColor}}" Grid.Row="0" Grid.Column="4"/>
-            <Rectangle Fill="{Binding Block_pan[0-5], Converter={StaticResource IntToColor}}" Grid.Row="0" Grid.Column="5"/>
-            <Rectangle Fill="{Binding Block_pan[0-6], Converter={StaticResource IntToColor}}" Grid.Row="0" Grid.Column="6"/>
-            <Rectangle Fill="{Binding Block_pan[0-7], Converter={StaticResource IntToColor}}" Grid.Row="0" Grid.Column="7"/>
-            <Rectangle Fill="{Binding Block_pan[0-8], Converter={StaticResource IntToColor}}" Grid.Row="0" Grid.Column="8"/>
-            <Rectangle Fill="{Binding Block_pan[0-9], Converter={StaticResource IntToColor}}" Grid.Row="0" Grid.Column="9"/>
-            <Rectangle Fill="{Binding Block_pan[0-10], Converter={StaticResource IntToColor}}" Grid.Row="0" Grid.Column="10"/>
-            <Rectangle Fill="{Binding Block_pan[0-11], Converter={StaticResource IntToColor}}" Grid.Row="0" Grid.Column="11"/>
+                       
+            <Rectangle Fill="{Binding Path=Block_pan[0-0], Converter={StaticResource IntToColor}, Mode=OneWay}" Grid.Row="0" Grid.Column="0"/>
+            <Rectangle Fill="{Binding Path=Block_pan[0-1], Converter={StaticResource IntToColor}, Mode=OneWay}" Grid.Row="0" Grid.Column="1"/>
+            <Rectangle Fill="{Binding Path=Block_pan[0-9], Converter={StaticResource IntToColor}, Mode=OneWay}" Grid.Row="0" Grid.Column="9"/>
+            <Rectangle Fill="{Binding Path=Block_pan[0-2], Converter={StaticResource IntToColor}, Mode=OneWay}" Grid.Row="0" Grid.Column="2"/>
+            <Rectangle Fill="{Binding Path=Block_pan[0-3], Converter={StaticResource IntToColor}, Mode=OneWay}" Grid.Row="0" Grid.Column="3"/>
+            <Rectangle Fill="{Binding Path=Block_pan[0-4], Converter={StaticResource IntToColor}, Mode=OneWay}" Grid.Row="0" Grid.Column="4"/>
+            <Rectangle Fill="{Binding Path=Block_pan[0-5], Converter={StaticResource IntToColor}, Mode=OneWay}" Grid.Row="0" Grid.Column="5"/>
+            <Rectangle Fill="{Binding Path=Block_pan[0-6], Converter={StaticResource IntToColor}, Mode=OneWay}" Grid.Row="0" Grid.Column="6"/>
+            <Rectangle Fill="{Binding Path=Block_pan[0-7], Converter={StaticResource IntToColor}, Mode=OneWay}" Grid.Row="0" Grid.Column="7"/>
+            <Rectangle Fill="{Binding Path=Block_pan[0-8], Converter={StaticResource IntToColor}, Mode=OneWay}" Grid.Row="0" Grid.Column="8"/>
+            <Rectangle Fill="{Binding Path=Block_pan[0-10], Converter={StaticResource IntToColor}}" Grid.Row="0" Grid.Column="10"/>
+            <Rectangle Fill="{Binding Path=Block_pan[0-11], Converter={StaticResource IntToColor}}" Grid.Row="0" Grid.Column="11"/>
+            
+
+            
             <Rectangle Fill="{Binding Block_pan[1-0], Converter={StaticResource IntToColor}}" Grid.Row="1" Grid.Column="0"/>
             <Rectangle Fill="{Binding Block_pan[1-1], Converter={StaticResource IntToColor}}" Grid.Row="1" Grid.Column="1"/>
             <Rectangle Fill="{Binding Block_pan[1-2], Converter={StaticResource IntToColor}}" Grid.Row="1" Grid.Column="2"/>
@@ -320,10 +325,9 @@
             <Rectangle Fill="{Binding Block_pan[20-10], Converter={StaticResource IntToColor}}" Grid.Row="20" Grid.Column="10"/>
             <Rectangle Fill="{Binding Block_pan[20-11], Converter={StaticResource IntToColor}}" Grid.Row="20" Grid.Column="11"/>
 
-            <Grid BackgroundColor="Red" Grid.Column="11" Grid.Row="0"/>
         </Grid>
 
-        <Grid RowSpacing="0" ColumnSpacing="0"
+        <Grid RowSpacing="-2" ColumnSpacing="-2"
               Grid.Row="0" Grid.Column="1" Margin="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -362,17 +366,6 @@
                        TextTransform="None"
                        IsEnabled="False"/>
 
-            <Grid BackgroundColor="Red" Grid.Column="1" Grid.Row="2"/>
-<!--
-            <Grid BackgroundColor="{Binding Block_pan[2-0], Converter={StaticResource IntToColor}, ConverterParameter=1}" Grid.Row="2" Grid.Column="0"/>
-            <Grid BackgroundColor="{Binding Block_pan[2-1], Converter={StaticResource IntToColor}, ConverterParameter=1}" Grid.Row="2" Grid.Column="1"/>
-            <Grid BackgroundColor="{Binding Block_pan[2-2], Converter={StaticResource IntToColor}, ConverterParameter=1}" Grid.Row="2" Grid.Column="2"/>
-            <Grid BackgroundColor="{Binding Block_pan[2-3], Converter={StaticResource IntToColor}, ConverterParameter=1}" Grid.Row="2" Grid.Column="3"/>
-            <Grid BackgroundColor="{Binding Block_pan[3-0], Converter={StaticResource IntToColor}, ConverterParameter=1}" Grid.Row="3" Grid.Column="0"/>
-            <Grid BackgroundColor="{Binding Block_pan[3-1], Converter={StaticResource IntToColor}, ConverterParameter=1}" Grid.Row="3" Grid.Column="1"/>
-            <Grid BackgroundColor="{Binding Block_pan[3-2], Converter={StaticResource IntToColor}, ConverterParameter=1}" Grid.Row="3" Grid.Column="2"/>
-            <Grid BackgroundColor="{Binding Block_pan[3-3], Converter={StaticResource IntToColor}, ConverterParameter=1}" Grid.Row="3" Grid.Column="3"/>
--->
             <Rectangle Fill="{Binding Block_pan[2-0],Converter={StaticResource IntToColor},ConverterParameter=1}" Grid.Row="2" Grid.Column="0"/>
             <Rectangle Fill="{Binding Block_pan[2-1],Converter={StaticResource IntToColor},ConverterParameter=1}" Grid.Row="2" Grid.Column="1"/>
             <Rectangle Fill="{Binding Block_pan[2-2],Converter={StaticResource IntToColor},ConverterParameter=1}" Grid.Row="2" Grid.Column="2"/>
@@ -389,7 +382,7 @@
                        TextColor="Black" HorizontalTextAlignment="Center"
                        TextTransform="None"
                        IsEnabled="False"/>
-            <Label Text="{Binding Game_score, Mode=TwoWay}" FontSize="24"
+            <Label Text="{Binding Game_score}" FontSize="24"
                    Grid.Row="5" Grid.ColumnSpan="4"
                    BackgroundColor="Aqua"
                    FontFamily="Yet R"/>
@@ -421,6 +414,7 @@
                        IsEnabled="False"/>
 
             <Button Clicked="Button_Clicked" 
+                    x:Name="button"
                     Grid.Row="17" Grid.ColumnSpan="4"
                     BackgroundColor="Beige" FontFamily="Yet R"/>
 
