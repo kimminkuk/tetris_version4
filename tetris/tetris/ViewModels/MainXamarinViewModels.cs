@@ -25,6 +25,8 @@ namespace tetris.ViewModels
         int double_bounus = 0;
         double level_interval = 1000;
 
+        int time_interval = 1000;
+        int save_time = 0;
 
         int game_score;
         int game_line;
@@ -53,34 +55,62 @@ namespace tetris.ViewModels
         private BindableTwoDArray<int> block_pan = new BindableTwoDArray<int>(21, 12);
         private BindableTwoDArray<int> next_pan = new BindableTwoDArray<int>(4, 4);
 
+        
+
         Random rnd = new Random();
-        System.Threading.Thread TIME_Thread;
-        
-        
+        System.Timers.Timer timer;
+        System.Threading.Timer timer_;
+
+        public void timer_start(TimerCallback callback, int start_, int sendtime)
+        {
+            timer_ = new System.Threading.Timer(callback, null, start_, sendtime);
+        }
+        public void timer_stop()
+        {
+            timer_.Dispose();
+        }
 
         public MainXamarinViewModels()
         {
             Init_game();
+            
+            ////timer = new System.Timers.Timer(time_interval);
+            //timer.Interval = level_interval;
+            
+            //timer.Start();
+            //timer.Elapsed += My_Timer_Tick_;
+            //
+            //timer.Enabled = true;
+            //timer.Elapsed += new System.Timers.ElapsedEventHandler(My_Timer_Tick);
             //Device.StartTimer(new TimeSpan(0, 0, 1), () =>
-            //TIME_Thread.Start();
-            Device.StartTimer(TimeSpan.FromMilliseconds(level_interval), () =>
-            {
-                
-                // do something every 60 seconds
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    // interact with UI elements
-                    My_Timer_Tick();
-                });
-                return true; // runs again, or false to stop
-            });
-
+            //TIME_Thread.Start();            
         }
 
         private void StartTimer()
         {
-            TIME_Thread.Start();
-            TIME_Thread.Abort();
+            time_interval = 1000 - ((game_level - 1) * 200);
+            ////Device.StartTimer(TimeSpan.FromTicks(time_interval), () =>
+            //{
+            //
+            //    // do something every 60 seconds
+            //    Device.BeginInvokeOnMainThread(() =>
+            //    {
+            //        // interact with UI elements
+            //        timer.Interval = level_interval;
+            //        timer.Start();
+            //    });
+            //    return true; // runs again, or false to stop
+            //});
+            //
+            //save_time = time_interval;
+
+            timer_start(My_Timer_Tick_object, 0, time_interval);
+
+        }
+
+        private void StopTimer()
+        {
+            timer.Stop();
         }
 
         private void grid_color(object sender, EventArgs e)
@@ -88,12 +118,35 @@ namespace tetris.ViewModels
             DrawPanBlock();
         }
 
+        private void My_Timer_Tick_(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            if (Is_gaming)
+            {
+                Block_down();
+            }
+            else
+            {
+                DrawCrash();
+            }
+        }
+
         private void My_Timer_Tick()
         {
             if (Is_gaming)
             {
                 Block_down();
-                level_interval -= 50;
+            }
+            else
+            {
+                DrawCrash();
+            }
+        }
+
+        private void My_Timer_Tick_object(object object_)
+        {
+            if (Is_gaming)
+            {
+                Block_down();
             }
             else
             {
@@ -133,7 +186,7 @@ namespace tetris.ViewModels
 
                 DrawNext();
                 Block_down();
-                //StartTimer();
+                StartTimer();
             }
             else
             {
@@ -208,7 +261,7 @@ namespace tetris.ViewModels
             }
         }
 
-        private void Block_down()
+        public void Block_down()
         {
             if(Check_Can_Move(Constants.MOVE_DOWN))
             {
@@ -232,6 +285,62 @@ namespace tetris.ViewModels
                 }
                 Cal_Block();
                 NewBlock();
+            }
+        }
+        public void Block_drop()
+        {
+            DrawCurrentBlock(Constants.Block_background);
+
+            while (Check_Can_Move(Constants.MOVE_DOWN))
+            {
+                status_y++;
+            }
+            DrawCurrentBlock(block_kind);
+            Block_down();
+        }
+
+        public void Block_left()
+        {
+            if (Check_Can_Move(Constants.MOVE_LEFT))
+            {
+                DrawCurrentBlock(Constants.Block_background);
+                status_x--;
+                DrawCurrentBlock(block_kind);
+            }
+        }
+
+        public void Block_right()
+        {
+            if (Check_Can_Move(Constants.MOVE_RIGHT))
+            {
+                DrawCurrentBlock(Constants.Block_background);
+                status_x++;
+                DrawCurrentBlock(block_kind);
+            }
+        }
+
+        public void Block_rotate()
+        {
+            int i = 0, j = 0;
+            int[,] l_block = new int[4, 4];
+            for(i = 0; i < 4; i++) 
+            { 
+                 for(j = 0; j < 4; j++)
+                {
+                    l_block[3-j, i] = _block_buf[i, j]; 
+                }
+            }
+            if( Check_Crash(status_x, status_y, l_block) )
+            {
+                DrawCurrentBlock(Constants.Block_background);
+                for(i = 0; i < 4; i++)
+                {
+                    for(j = 0; j <4; j++)
+                    {
+                        _block_buf[i, j] = l_block[i, j];
+                    }
+                }
+                DrawCurrentBlock(block_kind);
             }
         }
 

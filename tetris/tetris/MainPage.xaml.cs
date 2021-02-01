@@ -32,7 +32,7 @@ namespace tetris
             InitializeComponent();
             BindingContext = new MainXamarinViewModels();
             
-
+            
             //this.BindingContext = new MainXamarinViewModels();
             //this.BindingContext = MX;
 
@@ -44,7 +44,6 @@ namespace tetris
 
             MainXamarinViewModels MV = (MainXamarinViewModels)BindingContext;
             MV.EnterGame();
-
             //MX.EnterGame();
             //MX.EnterGame();
             //this.BindingContext = MainPage.BindingContextProperty;
@@ -64,6 +63,67 @@ namespace tetris
 
             //MainXamarinViewModels mainXamarinViewModels = new MainXamarinViewModels();
             //this.BindingContext = mainXamarinViewModels;
+        }
+
+        private void Button_Clicked_LEFT(object sender, EventArgs e)
+        {
+            MainXamarinViewModels MV = (MainXamarinViewModels)BindingContext;
+            if(MV.Is_gaming) //IF TRUE
+            {
+                MV.Block_left();
+            }
+            else
+            {
+                return;
+            }
+        }
+        private void Button_Clicked_DOWN(object sender, EventArgs e)
+        {
+            MainXamarinViewModels MV = (MainXamarinViewModels)BindingContext;
+            if (MV.Is_gaming) //IF TRUE
+            {
+                MV.Block_down();
+            }
+            else
+            {
+                return;
+            }
+        }
+        private void Button_Clicked_RIGHT(object sender, EventArgs e)
+        {
+            MainXamarinViewModels MV = (MainXamarinViewModels)BindingContext;
+            if (MV.Is_gaming) //IF TRUE
+            {
+                MV.Block_right();
+            }
+            else
+            {
+                return;
+            }
+        }
+        private void Button_Clicked_ROTATE(object sender, EventArgs e)
+        {
+            MainXamarinViewModels MV = (MainXamarinViewModels)BindingContext;
+            if (MV.Is_gaming) //IF TRUE
+            {
+                MV.Block_rotate();
+            }
+            else
+            {
+                return;
+            }
+        }
+        private void Button_Clicked_DROP(object sender, EventArgs e)
+        {
+            MainXamarinViewModels MV = (MainXamarinViewModels)BindingContext;
+            if (MV.Is_gaming) //IF TRUE
+            {
+                MV.Block_drop();
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

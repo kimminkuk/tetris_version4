@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
         
         <Grid Background="White" Grid.Row="0" Grid.Column="0"/>
-        <Grid Background="Blue" Grid.Row="1" Grid.Column="0"/>
+
         <Grid Background="Green" Grid.Row="0" Grid.Column="1"/>
         <Grid Background="Green" Grid.Row="1" Grid.Column="1"/>
 
@@ -420,6 +420,36 @@
 
         </Grid>
 
+
+        <Grid Grid.Row="1" Grid.Column="0"
+              RowSpacing="0" ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Clicked="Button_Clicked_LEFT" x:Name="KEY_LEFT"
+                    Grid.Column="0"
+                    BackgroundColor="Aqua"/>
+            <Button Clicked="Button_Clicked_DOWN" x:Name="KEY_DOWN"
+                    Grid.Column="1"
+                    BackgroundColor="red"/>
+            <Button Clicked="Button_Clicked_RIGHT" x:Name="KEY_RIGHT"
+                    Grid.Column="2"
+                    BackgroundColor="RoyalBlue"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1"
+              RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Clicked="Button_Clicked_ROTATE" x:Name="KEY_ROTATE"
+                    Grid.Row="0" BackgroundColor="Purple"/>
+            <Button Clicked="Button_Clicked_DROP" x:Name="KEY_DROP"
+                    Grid.Row="1" BackgroundColor="AliceBlue"/>
+        </Grid>
 
     </Grid>
 
