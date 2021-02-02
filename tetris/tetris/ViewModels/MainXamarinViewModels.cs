@@ -23,10 +23,8 @@ namespace tetris.ViewModels
         int status_x = 0;
         int status_y = 0;
         int double_bounus = 0;
-        double level_interval = 1000;
 
         int time_interval = 1000;
-        int save_time = 0;
 
         int game_score;
         int game_line;
@@ -34,21 +32,11 @@ namespace tetris.ViewModels
 
         public bool Is_gaming { get; set; } = false;
 
-        //public int Game_level 
-        //{
-        //    set 
-        //    { 
-        //        if( G )
-        //    } 
-        //}
-
         public int Game_score { get => game_score; set { game_score = value; NotifyPropertyChanged("Game_score"); } }
         public int Game_line { get => game_line; set { game_line = value; NotifyPropertyChanged("Game_line"); } }
         public int Game_level { get => game_level; set { game_level = value; NotifyPropertyChanged("Game_level"); } }
 
         public BindableTwoDArray<int> Block_pan { get => block_pan; set => block_pan = value; }
-       // public BindableTwoDArray<int> Block_pan { get => block_pan; set { block_pan = value; block_pan.NotifyBlockChaned("Block_pan"); } }
-       // public BindableTwoDArray<int> Next_pan { get => next_pan; set { next_pan = value; next_pan.NotifyBlockChaned("Block_pan"); } }
 
         public BindableTwoDArray<int> Next_pan { get => next_pan; set => next_pan = value; }
 
@@ -58,13 +46,13 @@ namespace tetris.ViewModels
         
 
         Random rnd = new Random();
-        System.Timers.Timer timer;
         System.Threading.Timer timer_;
 
         public void timer_start(TimerCallback callback, int start_, int sendtime)
         {
             timer_ = new System.Threading.Timer(callback, null, start_, sendtime);
         }
+
         public void timer_stop()
         {
             timer_.Dispose();
@@ -72,45 +60,14 @@ namespace tetris.ViewModels
 
         public MainXamarinViewModels()
         {
-            Init_game();
-            
-            ////timer = new System.Timers.Timer(time_interval);
-            //timer.Interval = level_interval;
-            
-            //timer.Start();
-            //timer.Elapsed += My_Timer_Tick_;
-            //
-            //timer.Enabled = true;
-            //timer.Elapsed += new System.Timers.ElapsedEventHandler(My_Timer_Tick);
-            //Device.StartTimer(new TimeSpan(0, 0, 1), () =>
-            //TIME_Thread.Start();            
+            Init_game();    
         }
 
         private void StartTimer()
         {
             time_interval = 1000 - ((game_level - 1) * 200);
-            ////Device.StartTimer(TimeSpan.FromTicks(time_interval), () =>
-            //{
-            //
-            //    // do something every 60 seconds
-            //    Device.BeginInvokeOnMainThread(() =>
-            //    {
-            //        // interact with UI elements
-            //        timer.Interval = level_interval;
-            //        timer.Start();
-            //    });
-            //    return true; // runs again, or false to stop
-            //});
-            //
-            //save_time = time_interval;
-
             timer_start(My_Timer_Tick_object, 0, time_interval);
 
-        }
-
-        private void StopTimer()
-        {
-            timer.Stop();
         }
 
         private void grid_color(object sender, EventArgs e)
@@ -118,47 +75,69 @@ namespace tetris.ViewModels
             DrawPanBlock();
         }
 
-        private void My_Timer_Tick_(object sender, System.Timers.ElapsedEventArgs e)
+        private async void My_Timer_Tick_object(object object_)
         {
-            if (Is_gaming)
+            await Task.Run(() =>
             {
-                Block_down();
-            }
-            else
-            {
-                DrawCrash();
-            }
+                if (Is_gaming)
+                {
+                    Application.Current.Dispatcher.BeginInvokeOnMainThread((Action)delegate
+                    {
+                        Block_down();
+                    });
+                }
+                else
+                {
+                    DrawCrash();
+                }
+            });
         }
 
-        private void My_Timer_Tick()
+        //tetris end action
+        private async void DrawCrash()
         {
-            if (Is_gaming)
+            await Task.Run(() =>
             {
-                Block_down();
-            }
-            else
-            {
-                DrawCrash();
-            }
+                timer_stop();
+                int[,] end = new int[21, 12]
+                {
+                    { -1,0,0,0,0,0,0,0,0,0,0,-1 },
+                    { -1,0,0,1,1,1,1,1,0,0,0,-1 },
+                    { -1,0,0,1,0,0,0,0,0,0,0,-1 },
+                    { -1,0,0,1,1,1,1,1,0,0,0,-1 },
+                    { -1,0,0,1,0,0,0,0,0,0,0,-1 },
+                    { -1,0,0,1,1,1,1,1,0,0,0,-1 },
+                    { -1,0,0,0,0,0,0,0,0,0,0,-1 },
+                    { -1,0,0,2,0,0,0,2,0,0,0,-1 },
+                    { -1,0,0,2,2,0,0,2,0,0,0,-1 },
+                    { -1,0,0,2,2,2,0,2,0,0,0,-1 },
+                    { -1,0,0,2,0,2,2,2,0,0,0,-1 },
+                    { -1,0,0,2,0,0,2,2,0,0,0,-1 },
+                    { -1,0,0,0,0,0,0,0,0,0,0,-1 },
+                    { -1,0,0,3,3,3,3,0,0,0,0,-1 },
+                    { -1,0,0,3,0,0,3,3,0,0,0,-1 },
+                    { -1,0,0,3,0,0,0,3,0,0,0,-1 },
+                    { -1,0,0,3,0,0,0,3,0,0,0,-1 },
+                    { -1,0,0,3,0,0,3,3,0,0,0,-1 },
+                    { -1,0,0,3,3,3,3,0,0,0,0,-1 },
+                    { -1,0,0,0,0,0,0,0,0,0,0,-1 },
+                    { -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 }
+                };
+                for (int i = 0; i < 21; i++)
+                {
+                    for (int j = 0; j < 12; j++)
+                    {
+                        block_pan[i, j] = end[i, j];
+                    }
+                    Application.Current.Dispatcher.BeginInvokeOnMainThread((Action)delegate
+                    {
+                        NotifyPropertyChanged(nameof(Block_pan));
+                    });
+                    System.Threading.Thread.Sleep(10);
+                }
+                Is_gaming = false;
+            });
         }
-
-        private void My_Timer_Tick_object(object object_)
-        {
-            if (Is_gaming)
-            {
-                Block_down();
-            }
-            else
-            {
-                DrawCrash();
-            }
-        }
-
-        private void DrawCrash()
-        {
-            return;
-        }
-
         private void Init_game()
         {
             block_kind = rnd.Next(1, 7);
@@ -198,7 +177,7 @@ namespace tetris.ViewModels
         private void DrawNext()
         {
             DrawBufBlock(next_block, next_pan);
-            next_pan.NotifyBlockChaned(nameof(Block_pan));
+            NotifyPropertyChanged(nameof(Next_pan));
         }
 
         private void DrawPanBlock()
@@ -220,7 +199,6 @@ namespace tetris.ViewModels
                     }
                 }
             }
-            //next_pan.NotifyBlockChaned(nameof(Block_pan));
             NotifyPropertyChanged(nameof(Block_pan));
         }
 
@@ -351,17 +329,18 @@ namespace tetris.ViewModels
             status_y = -3;
             DrawBufBlock(block_kind, _block_buf);
             next_block = rnd.Next(1, 7);
-            //if (Check_Can_Move(Constants.TETRIS_MOVE_DOWN))
-            //{
-            //    DrawNext();
-            //    StopTimer();
-            //    Block_down();
-            //    StartTimer();
-            //}
-            //else
-            //{
-            //    DrawCrash();
-            //}
+
+            if (Check_Can_Move(Constants.MOVE_DOWN))
+            {
+                DrawNext();
+                timer_stop();
+                Block_down();
+                StartTimer();
+            }
+            else //end Action
+            {
+                DrawCrash();
+            }
         }
 
         private void Cal_Block()
@@ -380,7 +359,7 @@ namespace tetris.ViewModels
                     Game_line++;
                     Game_score = game_score + double_bounus;
 
-                    if( (game_line % 5) ==0 )
+                    if( (game_line % 3) == 0 ) // line clear time => 3,6,9... 
                     {
                         Game_level++;
                     }
@@ -422,9 +401,7 @@ namespace tetris.ViewModels
                     }
                 }
             }
-            //next_pan.NotifyBlockChaned(nameof(Block_pan));
             NotifyPropertyChanged(nameof(Block_pan));
-            //block_pan.NotifyBlockChaned(nameof(Block_pan));
         }
 
         private bool Check_Can_Move(int direct_)

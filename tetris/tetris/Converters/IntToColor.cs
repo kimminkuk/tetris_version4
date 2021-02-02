@@ -30,7 +30,7 @@ namespace tetris.Converters
                     return new SolidColorBrush(Color.Black);
 
                 case Constants.Block_wall:
-                    return new SolidColorBrush(Color.Ivory);
+                    return new SolidColorBrush(Color.PaleGoldenrod);
                 case Constants.Block_1:
                     return new SolidColorBrush(Color.Green);
                 case Constants.Block_2:

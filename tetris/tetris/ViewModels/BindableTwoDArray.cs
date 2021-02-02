@@ -15,34 +15,17 @@ namespace tetris.ViewModels
     /// This class is a bindable encapsulation of a 2D array.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class BindableTwoDArray<T> : INotifyPropertyChanged, INotifyPropertyChanging
+    public class BindableTwoDArray<T> : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public event PropertyChangingEventHandler PropertyChanging;
-
-        private void Notify_changing(string property)
-        {
-            var pc = PropertyChanging;
- 
-            if( pc != null)
-            {
-                pc(this, new PropertyChangingEventArgs(property));
-            }
-        }
 
         private void Notify(string property)
         {
             var pc = PropertyChanged;
             if (pc != null)
             {
-                Type t = this.GetType();
-                //t.GetMembers(System.Reflection.BindingFlags.NonPublic);
-                
                 pc(this, new PropertyChangedEventArgs(property));
-                //pc(this, new PropertyChangedEventArgs(string.Empty));
-                //pc(t.GetMembers(System.Reflection.BindingFlags.NonPublic), new PropertyChangedEventArgs(property));
             }
         }
 
@@ -52,11 +35,6 @@ namespace tetris.ViewModels
         {
             
             Notify(_change);
-            //Notify_changing(_change);
-//            Notify(_change);
-//            Notify(_change);
-            //Notify("Block_pan");
-            //Notify(Binding.IndexerName);
         }
         public T this[int c1, int c2]
         {

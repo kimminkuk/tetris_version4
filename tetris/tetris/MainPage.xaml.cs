@@ -12,7 +12,6 @@ namespace tetris
     public partial class MainPage : ContentPage
     {
         public static MainXamarinViewModels MX = new MainXamarinViewModels();
-        bool entergame = false;
         public MainPage()
         {
             
