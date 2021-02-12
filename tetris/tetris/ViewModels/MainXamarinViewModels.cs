@@ -65,7 +65,7 @@ namespace tetris.ViewModels
 
         private void StartTimer()
         {
-            time_interval = 1000 - ((game_level - 1) * 500); //200
+            time_interval = 1000 - ((game_level - 1) * 200); //200
             if(time_interval <= 0)
             {
                 time_interval = 150; //to finish time....
