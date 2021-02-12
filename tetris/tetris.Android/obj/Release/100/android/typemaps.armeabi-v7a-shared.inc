@@ -79,32 +79,32 @@
 	.section	.rodata.map_aname.13,"aMS",%progbits,1
 	.type	.L.map_aname.13, %object
 .L.map_aname.13:
-	.asciz	"FormsViewGroup"
+	.asciz	"tetris.Android"
 	.size	.L.map_aname.13, 15
 
 	.section	.rodata.map_aname.14,"aMS",%progbits,1
 	.type	.L.map_aname.14, %object
 .L.map_aname.14:
-	.asciz	"Xamarin.AndroidX.Loader"
-	.size	.L.map_aname.14, 24
+	.asciz	"FormsViewGroup"
+	.size	.L.map_aname.14, 15
 
 	.section	.rodata.map_aname.15,"aMS",%progbits,1
 	.type	.L.map_aname.15, %object
 .L.map_aname.15:
-	.asciz	"Xamarin.AndroidX.ViewPager"
-	.size	.L.map_aname.15, 27
+	.asciz	"Xamarin.AndroidX.Loader"
+	.size	.L.map_aname.15, 24
 
 	.section	.rodata.map_aname.16,"aMS",%progbits,1
 	.type	.L.map_aname.16, %object
 .L.map_aname.16:
-	.asciz	"Xamarin.AndroidX.SwipeRefreshLayout"
-	.size	.L.map_aname.16, 36
+	.asciz	"Xamarin.AndroidX.ViewPager"
+	.size	.L.map_aname.16, 27
 
 	.section	.rodata.map_aname.17,"aMS",%progbits,1
 	.type	.L.map_aname.17, %object
 .L.map_aname.17:
-	.asciz	"tetris.Android"
-	.size	.L.map_aname.17, 15
+	.asciz	"Xamarin.AndroidX.SwipeRefreshLayout"
+	.size	.L.map_aname.17, 36
 
 	.section	.rodata.map_aname.18,"aMS",%progbits,1
 	.type	.L.map_aname.18, %object

@@ -557,7 +557,7 @@
 
 	/* 61: tetris.dll */
 	/* uncompressed_file_size */
-	.word	185856
+	.word	185344
 	/* loaded */
 	.byte	0
 	/* data */
